@@ -18,6 +18,9 @@ const forecast = (lat, long, callback) => {
 					description: resp.body.current.weather_descriptions[0],
 					currentTemp: resp.body.current.temperature,
 					feelsLike: resp.body.current.feelslike,
+					windSpeed: resp.body.current.wind_speed,
+					windDirection: resp.body.current.wind_dir,
+					icon: resp.body.current.weather_icons[0],
 				});
 			}
 		},
