@@ -11,16 +11,14 @@ weatherForm.addEventListener('submit', (e) => {
 
 	locationDisplay.textContent = 'Searching...';
 
-	fetch(`http://localhost:3000/weather?address=${location}`).then(
-		(response) => {
-			response.json().then((data) => {
-				if (data.error) {
-					errorDisplay.textContent = data.error;
-				} else {
-					locationDiplay.textContent = `In ${data.location}, it is currently ${data.forecastData.description}. 
+	fetch(`/weather?address=${location}`).then((response) => {
+		response.json().then((data) => {
+			if (data.error) {
+				errorDisplay.textContent = data.error;
+			} else {
+				locationDiplay.textContent = `In ${data.location}, it is currently ${data.forecastData.description}. 
 					The temperature is ${data.forecastData.currentTemp}° F, and it feels like ${data.forecastData.feelsLike}° F`;
-				}
-			});
-		},
-	);
+			}
+		});
+	});
 });
